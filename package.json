@@ -1,0 +1,11 @@
+{
+	"name": "com.izaakschroder.random",
+	"version": "0.0.1",
+	"main": "index.js",
+	"dependencies": {
+		"amdefine": ">=0.0.2"
+	},
+	"devDependencies": {
+		"nodeunit": ">=0.0.1"
+	}
+}
