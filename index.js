@@ -1,25 +1,24 @@
+
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
-define(["./lib/mersenne", "./lib/ziggurat"], function(MersenneTwister, Ziggurat) {
+define([
+	'./lib/random', 
+	'./lib/distribution', 
+	'./lib/mersenne'
+], function(Random, Distribution, MersenneTwister) {
 	
-	"use strict";
+	'use strict';
 
 	return {
-		createUniformGenerator: function(seed) {
-			return MersenneTwister.fromSeed(typeof seed !== "undefined" ? seed : Date.now())
-		},
-		createGaussianGenerator: function(seed) {
-			return Ziggurat.fromSource(this.createUniformGenerator(seed));
-		},
 		createGenerator: function(opts) {
+			var backend;
 			if (typeof opts === "number")
-				return this.createUniformGenerator(opts);
-			//TODO: Fix me!
-			throw new Error("Not yet implemented!");
+				backend = MersenneTwister.fromSeed(opts);
+			else
+				backend = MersenneTwister.fromSeed(Date.now());
+			return new Random(backend);
 		},
-		occurs: function(generator, chance) {
-			return generator.numberOnClosedUnitInterval() < chance;
-		}
+		Distribution: Distribution
 	};
 
 });

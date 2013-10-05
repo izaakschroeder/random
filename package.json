@@ -1,11 +1,22 @@
 {
-	"name": "com.izaakschroder.random",
-	"version": "0.0.1",
+	"name": "com.izaakschroeder.random",
+	"description": "Random library.",
+	"version": "0.0.2",
 	"main": "index.js",
+	"engines": {
+		"nodejs": ">=0.10.4"
+	},
 	"dependencies": {
 		"amdefine": ">=0.0.2"
 	},
 	"devDependencies": {
-		"nodeunit": ">=0.0.1"
+		"mocha": ">=1.12.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/izaakschroeder/random.git"
+	},
+	"scripts": {
+		"test": "mocha -R spec test"
 	}
 }
